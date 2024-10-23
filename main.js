@@ -1,24 +1,29 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import "./style.css";
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+document.querySelector("#app").innerHTML = `
+   <div class="myvideo">
+      <img src="/c.jpg" alt="profile picture" class="profile-picture" id="profilePicture" />
+   </div>
+   <div class="profile-name">@follow</div>
+   <!-- Links-->
+   <a href="https://test-brown-eta.vercel.app/" target="_blank" class="links">Web Agency</a>
+   <a href="https://boton-dark.vercel.app/" target="_blank" class="links">Paper Text</a>
+   <a href="https://stickynavbar.vercel.app/" target="_blank" class="links">Navbar Sticky</a>
+   <div class="bottom-text">2024</div>
+`;
 
-setupCounter(document.querySelector('#counter'))
+const profilePicture = document.getElementById("profilePicture");
+
+async function copyLink(e) {
+  e.preventDefault();
+  const currentURL = window.location.href; // Obtiene la URL actual
+  try {
+    await navigator.clipboard.writeText(currentURL); // Copia la URL al portapapeles
+    alert("Link copiado: " + currentURL); // Mensaje de confirmación
+  } catch (err) {
+    console.error("Failed to copy: ", err);
+  }
+}
+
+// Agrega el evento de clic a la imagen
+profilePicture.addEventListener("click", copyLink);
